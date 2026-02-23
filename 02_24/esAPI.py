@@ -40,7 +40,7 @@ def ScelgiCategoria():
             else:
                 corretto = True
                 return scelta
-def vediProdotti(ris):
+def ScegliDettagli(ris):
     x = requests.get(f"https://fakeapi.net/products/category/{ris}")
     if x.status_code!=200:
         print("Errore nel contattare il servizio online!")
@@ -65,7 +65,7 @@ def vediProdotti(ris):
                 corretto = False
                 print("risposta non corretta")
 
-def vediDettagli(lista):
+def InserisciID(lista):
     try:
         corretto = False
         while not corretto:
@@ -86,15 +86,15 @@ def vediDettagli(lista):
         print("non valido")
 
 
-rifai = False
+rifai = True
 while not rifai:
     VediCategorie()
     scelta = ScelgiCategoria()
-    dettagli,lista = vediProdotti(scelta)
+    dettagli,lista = ScegliDettagli(scelta)
     if dettagli == "s":
-        vediDettagli(lista)
-        rifai = False
+        InserisciID(lista)
+        rifai = True
     elif dettagli == "n":
-        rifai = False
+        rifai = True
     
     
