@@ -43,8 +43,13 @@ def inserisciFilm(l):
     corretto = False
     while not corretto:
         nome = input("Inserisci il nome del film da inserire: ")
-        l.append(nome)
-        corretto = True
+        if len(nome) < 2:
+            print("Ciò che hai inserito è troppo corto o vuoto")
+        elif nome in l:
+            print("Film già presente")
+        else:
+            l.append(nome)
+            corretto = True
 
 def visualizzaFilm(l):
     print("--------ARCHIVIO-FILM--------")
@@ -67,8 +72,11 @@ def modificaFilm(l):
                 else:
                     indice = l.index(l[modifica-1])
                     nuovoNome = input("Inserisci il nuovo nome del film: ")
-                    l[indice] = nuovoNome
-                    corretto = True
+                    if len(nome) < 2:
+                        print("Ciò che hai inserito è troppo corto o vuoto")
+                    else:
+                        l[indice] = nuovoNome
+                        corretto = True
             except:
                 print("Formato non valido")
 
